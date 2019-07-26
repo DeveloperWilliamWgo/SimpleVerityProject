@@ -1,0 +1,11 @@
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Services.dll
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Services.pdb
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Data.dll
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Domain.dll
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Data.pdb
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Domain.pdb
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.csprojAssemblyReference.cache
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.csproj.CoreCompileInputs.cache
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.csproj.CopyComplete
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.dll
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.pdb

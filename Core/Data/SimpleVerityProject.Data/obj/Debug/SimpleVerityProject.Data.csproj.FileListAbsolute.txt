@@ -1,0 +1,9 @@
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\bin\Debug\SimpleVerityProject.Data.dll
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\bin\Debug\SimpleVerityProject.Data.pdb
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\bin\Debug\SimpleVerityProject.Domain.dll
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\bin\Debug\SimpleVerityProject.Domain.pdb
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.csprojAssemblyReference.cache
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.csproj.CoreCompileInputs.cache
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.csproj.CopyComplete
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.dll
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.pdb
