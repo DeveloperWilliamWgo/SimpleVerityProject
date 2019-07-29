@@ -44,9 +44,14 @@
   <ItemGroup>
     <Compile Include="Dao\ProdutoDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Base\ProdutoRepository.cs" />
-    <Compile Include="Repositories\IRepositorio.cs" />
-    <Compile Include="Repositories\Base\RepositorioBase.cs" />
+    <Compile Include="Repositories\Base\ICosifRepository.cs" />
+    <Compile Include="Repositories\Base\IMovimentoRepository.cs" />
+    <Compile Include="Repositories\Base\IProdutoRepository.cs" />
+    <Compile Include="Repositories\CosifRepository.cs" />
+    <Compile Include="Repositories\MovimentoRepository.cs" />
+    <Compile Include="Repositories\ProdutoRepository.cs" />
+    <Compile Include="Repositories\Base\IRepository.cs" />
+    <Compile Include="Repositories\RepositorioBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\SimpleVerityProject.Domain\SimpleVerityProject.Domain.csproj">

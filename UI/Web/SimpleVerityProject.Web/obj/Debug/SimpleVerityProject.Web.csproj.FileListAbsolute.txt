@@ -1,3 +1,5 @@
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\obj\Debug\SimpleVerityProject.Web.csprojAssemblyReference.cache
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\obj\Debug\SimpleVerityProject.Web.csproj.CoreCompileInputs.cache
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Web.dll.config
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Web.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Web.pdb
@@ -48,11 +50,10 @@ C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\roslyn\VBCSCompiler.exe
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\roslyn\VBCSCompiler.exe.config
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\Antlr3.Runtime.dll
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\AutoMapper.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\Microsoft.Web.Infrastructure.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\Newtonsoft.Json.dll
-C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleInjector.dll
-C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleInjector.Integration.WebApi.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Data.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Domain.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Services.dll
@@ -70,8 +71,8 @@ C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Data.pdb
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Domain.pdb
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleVerityProject.Services.pdb
-C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleInjector.xml
-C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\SimpleInjector.Integration.WebApi.xml
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\AutoMapper.pdb
+C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\AutoMapper.xml
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\Newtonsoft.Json.xml
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\System.Net.Http.Formatting.xml
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\System.Web.Helpers.xml
@@ -85,8 +86,6 @@ C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\System.Web.WebPages.Razor.xml
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\Antlr3.Runtime.pdb
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\obj\Debug\SimpleVerityProject.Web.csprojAssemblyReference.cache
-C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\obj\Debug\SimpleVerityProject.Web.csproj.CoreCompileInputs.cache
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\obj\Debug\SimpleVerityProject.Web.csproj.CopyComplete
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\obj\Debug\SimpleVerityProject.Web.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\UI\Web\SimpleVerityProject.Web\obj\Debug\SimpleVerityProject.Web.pdb

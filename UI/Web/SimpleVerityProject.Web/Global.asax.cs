@@ -1,9 +1,4 @@
-﻿using ProjectVerity.Services;
-using SimpleInjector;
-using SimpleInjector.Integration.WebApi;
-using SimpleVerityProject.Services.Interfaces;
-using System.Reflection;
-using System.Web.Http;
+﻿using SimpleVerityProject.Web.Mappers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -19,14 +14,8 @@ namespace SimpleVerityProject.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var container = new Container();
-
-            container.Register<IProdutoService, ProdutoService>(Lifestyle.Singleton);
-
-            container.RegisterWebApiControllers(GlobalConfiguration.Configuration); //web api          
-            container.Verify();
-
-            GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container); //web api
+            // Configurando o AutoMapper para registrar os profiles
+            // de mapeamento durante a inicialização da aplicação.
         }
     }
 }

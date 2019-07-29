@@ -11,8 +11,6 @@ namespace SimpleVerityProject.Services.Interfaces
         bool Excluir(int idEntidade);
 
         Produto BuscarPorId(int id);
-        IList<Produto> ListarTodos();
-        IList<Produto> Listar(Func<Produto, bool> where);
-        IList<Produto> ListarFiltrando(Expression<Func<Produto, bool>> predicate);
+        List<Produto> ListarTodos();
     }
 }

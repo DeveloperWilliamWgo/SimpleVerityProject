@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICosifService.cs" />
+    <Compile Include="Interfaces\IMovimentoService.cs" />
     <Compile Include="Interfaces\IProdutoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CosifService.cs" />
+    <Compile Include="Services\MovimentoService.cs" />
     <Compile Include="Services\ProdutoService.cs" />
   </ItemGroup>
   <ItemGroup>

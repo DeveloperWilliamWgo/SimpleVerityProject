@@ -26,19 +26,9 @@ namespace ProjectVerity.Services
             return produtoRepository.BuscarPorId(id);
         }
 
-        public IList<Produto> ListarTodos()
+        public List<Produto> ListarTodos()
         {
             return produtoRepository.ListarTodos();
-        }
-
-        public IList<Produto> Listar(Func<Produto, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Produto> ListarFiltrando(Expression<Func<Produto, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }        
+        }    
     }
 }

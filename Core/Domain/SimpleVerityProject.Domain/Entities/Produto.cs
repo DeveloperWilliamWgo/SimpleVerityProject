@@ -11,7 +11,7 @@ namespace ProjectVerity.Domain.Entities
 
         public Produto(int produtoId, string descricao, bool ativo)
         {
-            ProdutoId = produtoId;
+            Id = produtoId;
             Descricao = descricao;
             Ativo = ativo;
         }
