@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using ProjectVerity.Domain.Entities;
-using SimpleVerityProject.Data;
+using SimpleVerityProject.Domain;
 using SimpleVerityProject.Services.Interfaces;
 
 namespace SimpleVerityProject.Services.Services

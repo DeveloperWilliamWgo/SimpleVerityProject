@@ -1,13 +1,14 @@
-﻿using ProjectVerity.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using ProjectVerity.Domain.Entities;
+using SimpleVerityProject.Data;
 
-namespace SimpleVerityProject.Data.Repositories.Base
+namespace SimpleVerityProject.Domain
 {
-    public class ProdutoRepository : RepositorioBase<Produto, ProdutoRepository>, IProdutoRepository
+    public class CosifRepository : RepositorioBase<Cosif, CosifRepository>, ICosifRepository
     {
-        public bool Salvar(Produto entidade)
+        public bool Salvar(Cosif entidade)
         {
             bool result = false;
             try
@@ -16,24 +17,22 @@ namespace SimpleVerityProject.Data.Repositories.Base
 
                 if (entidade.Id == 0)
                 {
-                    sql = @"INSERT INTO PRODUTO(DES_PRODUTO, STA_STATUS) values(@DES_PRODUTO, @STA_STATUS);";
-                    comando = CriarComando(sql);
-                }
-                else
-                {
-                    sql = @"UPDATE PRODUTO SET DES_PRODUTO = @DES_PRODUTO WHERE COD_PRODUTO = @COD_PRODUTO";
+                    sql = @"INSERT INTO COSIF(COD_CLASSIFICACAO, STA_STATUS, COD_PRODUTO) values(@COD_CLASSIFICACAO, @STA_STATUS, @COD_PRODUTO);";
                     comando = CriarComando(sql);
                 }
 
-                CriarParametro(comando, "@DES_PRODUTO", entidade.Descricao);
+                CriarParametro(comando, "@COD_CLASSIFICACAO", entidade.Classificacao);
                 comando.Parameters.Add(oParam);
 
                 CriarParametro(comando, "@STA_STATUS", entidade.Ativo);
                 comando.Parameters.Add(oParam);
 
+                CriarParametro(comando, "@COD_PRODUTO", entidade.ProdutoId);
+                comando.Parameters.Add(oParam);
+
                 if (entidade.Id > 0)
                 {
-                    DbParameter novoParametro = CriarParametro(comando, "@COD_PRODUTO", entidade.Id);
+                    DbParameter novoParametro = CriarParametro(comando, "@COD_COSIF", entidade.Id);
                     comando.Parameters.Add(novoParametro);
                 }
                 AbrirConexaoComBancoDados();
@@ -60,7 +59,7 @@ namespace SimpleVerityProject.Data.Repositories.Base
 
                 if (idEntidade > 0)
                 {
-                    sql = @"DELETE FROM PRODUTO WHERE COD_PRODUTO = @COD_PRODUTO";
+                    sql = @"DELETE FROM COSIF WHERE COD_COSIF = @COD_COSIF";
                 }
                 else
                 {
@@ -68,7 +67,7 @@ namespace SimpleVerityProject.Data.Repositories.Base
                 }
                 CriarComando(sql);
 
-                CriarParametro(comando, "@COD_PRODUTO", idEntidade);
+                CriarParametro(comando, "@COD_COSIF", idEntidade);
                 comando.Parameters.Add(oParam);
 
                 AbrirConexaoComBancoDados();
@@ -76,9 +75,9 @@ namespace SimpleVerityProject.Data.Repositories.Base
                 int linhas = comando.ExecuteNonQuery();
                 result = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception($"Erro - {ex.Message}", ex);
             }
             finally
             {
@@ -87,29 +86,28 @@ namespace SimpleVerityProject.Data.Repositories.Base
             return result;
         }
 
-        public Produto BuscarPorId(int id)
+        public Cosif BuscarPorId(int id)
         {
-            Produto entidade = new Produto();
+            Cosif cosif = new Cosif();
+            List<Produto> produtos = new List<Produto>();
             try
             {
-                CriarComando(" SELECT * FROM  PRODUTO WHERE COD_PRODUTO = @COD_PRODUTO");
+                CriarComando("SELECT * FROM COSIF CO INNER JOIN PRODUTO PRO ON PRO.COD_PRODUTO = CO.COD_PRODUTO WHERE COD_COSIF = @COD_COSIF;");
 
                 comando.Parameters.Clear();
 
-                CriarParametro(comando, "@COD_PRODUTO", id);
+                CriarParametro(comando, "@COD_COSIF", id);
 
                 comando.Parameters.Add(oParam);
 
                 AbrirConexaoComBancoDados();
                 CriarLeitorExecutarComando(comando);
 
-                if (oReader.Read() && oReader.HasRows)
+                while (oReader.Read() && oReader.HasRows)
                 {
-                    entidade = new Produto(oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"]));
-                }
-                else
-                {
-                    entidade = null;
+                    produtos.Add(new Produto((int)oReader["COD_PRODUTO"], oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"])));
+
+                    cosif = new Cosif((int)oReader["COD_COSIF"], oReader["COD_CLASSIFICACAO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"]), produtos);
                 }
             }
             catch (Exception ex)
@@ -120,27 +118,32 @@ namespace SimpleVerityProject.Data.Repositories.Base
             {
                 DesconectarComBancoDados();
             }
-            return entidade;
+
+            return cosif;
         }
 
-        public List<Produto> ListarTodos()
+        public List<Cosif> ListarTodos()
         {
-            List<Produto> entidades = new List<Produto>();
+            List<Produto> produtos = new List<Produto>();
 
+            List<Cosif> cosifs = new List<Cosif>();
+            
             try
             {
-                CriarComando("SELECT * FROM PRODUTO;");
+                CriarComando("SELECT * FROM COSIF CO INNER JOIN PRODUTO PRO ON PRO.COD_PRODUTO = CO.COD_PRODUTO ORDER BY 1 DESC");
 
                 comando.Parameters.Clear();
 
                 AbrirConexaoComBancoDados();
                 CriarLeitorExecutarComando(comando);
 
-                while (oReader.Read())
+                if (oReader.Read() && oReader.HasRows)
                 {
-                    if (oReader.GetInt32(0) > 0)
+                    while (oReader.Read())
                     {
-                        entidades.Add(new Produto((int)oReader["COD_PRODUTO"], oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"])));
+                        produtos.Add(new Produto((int)oReader["COD_PRODUTO"], oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"])));
+
+                        cosifs.Add(new Cosif((int)oReader["COD_COSIF"], oReader["COD_CLASSIFICACAO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"]), produtos));
                     }
                 }
             }
@@ -152,7 +155,8 @@ namespace SimpleVerityProject.Data.Repositories.Base
             {
                 DesconectarComBancoDados();
             }
-            return entidades;
+
+            return cosifs;
         }
     }
 }

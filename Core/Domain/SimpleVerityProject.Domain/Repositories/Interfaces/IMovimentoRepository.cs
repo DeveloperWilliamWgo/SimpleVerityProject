@@ -1,6 +1,6 @@
 ﻿using ProjectVerity.Domain.Entities;
 
-namespace SimpleVerityProject.Data
+namespace SimpleVerityProject.Domain
 {
     public interface IMovimentoRepository : IRepository<Movimento>
     {

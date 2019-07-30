@@ -1,12 +1,12 @@
 ﻿using ProjectVerity.Domain.Entities;
+using SimpleVerityProject.Data;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq.Expressions;
 
-namespace SimpleVerityProject.Data.Repositories.Base
+namespace SimpleVerityProject.Domain
 {
-    public class ProdutoRepository : RepositorioBase<Produto, ProdutoRepository>, IRepositorio<Produto>
+    public class ProdutoRepository : RepositorioBase<Produto, ProdutoRepository>, IProdutoRepository
     {
         public bool Salvar(Produto entidade)
         {
@@ -15,7 +15,7 @@ namespace SimpleVerityProject.Data.Repositories.Base
             {
                 string sql = "";
 
-                if (entidade.ProdutoId == 0)
+                if (entidade.Id == 0)
                 {
                     sql = @"INSERT INTO PRODUTO(DES_PRODUTO, STA_STATUS) values(@DES_PRODUTO, @STA_STATUS);";
                     comando = CriarComando(sql);
@@ -32,9 +32,9 @@ namespace SimpleVerityProject.Data.Repositories.Base
                 CriarParametro(comando, "@STA_STATUS", entidade.Ativo);
                 comando.Parameters.Add(oParam);
 
-                if (entidade.ProdutoId > 0)
+                if (entidade.Id > 0)
                 {
-                    DbParameter novoParametro = CriarParametro(comando, "@COD_PRODUTO", entidade.ProdutoId);
+                    DbParameter novoParametro = CriarParametro(comando, "@COD_PRODUTO", entidade.Id);
                     comando.Parameters.Add(novoParametro);
                 }
                 AbrirConexaoComBancoDados();
@@ -43,7 +43,7 @@ namespace SimpleVerityProject.Data.Repositories.Base
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception($"Erro - {ex.Message}", ex);
             }
             finally
             {
@@ -115,7 +115,7 @@ namespace SimpleVerityProject.Data.Repositories.Base
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception($"Erro - {ex.Message}", ex);
             }
             finally
             {
@@ -124,49 +124,36 @@ namespace SimpleVerityProject.Data.Repositories.Base
             return entidade;
         }
 
-        public IList<Produto> ListarTodos()
+        public List<Produto> ListarTodos()
         {
             List<Produto> entidades = new List<Produto>();
 
             try
             {
-                CriarComando(" SELECT  COD_PRODUTO, DES_PRODUTO, STA_STATUS FROM  PRODUTO ORDER BY 1 DESC;");
+                CriarComando("SELECT * FROM PRODUTO;");
 
                 comando.Parameters.Clear();
 
                 AbrirConexaoComBancoDados();
                 CriarLeitorExecutarComando(comando);
 
-                Produto entidade = null;
-                if (oReader.Read() && oReader.HasRows)
+                while (oReader.Read())
                 {
-                    while (oReader.Read())
+                    if (oReader.GetInt32(0) > 0)
                     {
                         entidades.Add(new Produto((int)oReader["COD_PRODUTO"], oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"])));
-
-                        entidades.Add(entidade);
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception($"Erro - {ex.Message}", ex);
             }
             finally
             {
                 DesconectarComBancoDados();
             }
             return entidades;
-        }
-
-        public IList<Produto> Listar(Func<Produto, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Produto> ListarFiltrando(Expression<Func<Produto, bool>> predicate)
-        {
-            throw new NotImplementedException();
         }
     }
 }

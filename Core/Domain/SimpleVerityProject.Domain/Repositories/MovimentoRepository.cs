@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using ProjectVerity.Domain.Entities;
+using SimpleVerityProject.Data;
 
-namespace SimpleVerityProject.Data.Repositories
+namespace SimpleVerityProject.Domain
 {
     public class MovimentoRepository : RepositorioBase<Movimento, MovimentoRepository>, IMovimentoRepository
     {
@@ -150,7 +151,7 @@ namespace SimpleVerityProject.Data.Repositories
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception($"Erro - {ex.Message}", ex);
             }
             finally
             {
@@ -186,7 +187,7 @@ namespace SimpleVerityProject.Data.Repositories
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception($"Erro - {ex.Message}", ex);
             }
             finally
             {

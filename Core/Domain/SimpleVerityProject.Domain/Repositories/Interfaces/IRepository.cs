@@ -1,6 +1,6 @@
 ﻿using SimpleVerityProject.Domain.Entities;
 
-namespace SimpleVerityProject.Data
+namespace SimpleVerityProject.Domain
 {
     public interface IRepository<T> where T : BaseEntity
     {

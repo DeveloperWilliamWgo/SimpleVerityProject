@@ -1,8 +1,6 @@
 ﻿using ProjectVerity.Services;
 using SimpleInjector;
-using SimpleVerityProject.Data;
-using SimpleVerityProject.Data.Repositories;
-using SimpleVerityProject.Data.Repositories.Base;
+using SimpleVerityProject.Domain;
 using SimpleVerityProject.Services.Interfaces;
 using SimpleVerityProject.Services.Services;
 

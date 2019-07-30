@@ -1,6 +1,5 @@
 ﻿using ProjectVerity.Domain.Entities;
-using SimpleVerityProject.Data;
-using SimpleVerityProject.Data.Repositories;
+using SimpleVerityProject.Domain;
 using SimpleVerityProject.Services.Interfaces;
 
 namespace SimpleVerityProject.Services.Services

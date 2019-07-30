@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProjectVerity.Domain.Entities;
 using ProjectVerity.Services;
-using SimpleVerityProject.Data;
+using SimpleVerityProject.Domain;
 using SimpleVerityProject.IoC;
 
 namespace SimpleVerityProject.Test

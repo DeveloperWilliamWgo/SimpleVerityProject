@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 using ProjectVerity.Domain.Entities;
-using SimpleVerityProject.Data.Repositories.Base;
+using SimpleVerityProject.Domain;
 using SimpleVerityProject.Services.Interfaces;
 
 namespace ProjectVerity.Services
