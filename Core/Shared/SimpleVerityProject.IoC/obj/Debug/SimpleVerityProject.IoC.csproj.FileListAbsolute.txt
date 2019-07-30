@@ -1,0 +1,15 @@
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleVerityProject.IoC.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleVerityProject.IoC.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleInjector.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleVerityProject.Data.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleVerityProject.Domain.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleVerityProject.Services.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleVerityProject.Data.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleVerityProject.Domain.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleVerityProject.Services.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\bin\Debug\SimpleInjector.xml
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\obj\Debug\SimpleVerityProject.IoC.csprojAssemblyReference.cache
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\obj\Debug\SimpleVerityProject.IoC.csproj.CoreCompileInputs.cache
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\obj\Debug\SimpleVerityProject.IoC.csproj.CopyComplete
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\obj\Debug\SimpleVerityProject.IoC.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Shared\SimpleVerityProject.IoC\obj\Debug\SimpleVerityProject.IoC.pdb

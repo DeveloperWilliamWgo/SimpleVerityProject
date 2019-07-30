@@ -1,5 +1,4 @@
 ﻿using SimpleVerityProject.Domain.Entities;
-using System.Collections.Generic;
 
 namespace SimpleVerityProject.Data
 {

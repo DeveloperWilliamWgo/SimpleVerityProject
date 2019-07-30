@@ -136,14 +136,11 @@ namespace SimpleVerityProject.Data.Repositories.Base
                 AbrirConexaoComBancoDados();
                 CriarLeitorExecutarComando(comando);
 
-                if (oReader.Read())
+                while (oReader.Read())
                 {
-                    while (oReader.Read())
+                    if (oReader.GetInt32(0) > 0)
                     {
-                        if (oReader.GetInt32(0) > 0)
-                        {
-                            entidades.Add(new Produto((int)oReader["COD_PRODUTO"], oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"])));
-                        }
+                        entidades.Add(new Produto((int)oReader["COD_PRODUTO"], oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"])));
                     }
                 }
             }

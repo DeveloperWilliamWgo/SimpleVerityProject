@@ -9,3 +9,14 @@ C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerity
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.csproj.CopyComplete
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Services.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Services.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Data.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Domain.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Data.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\bin\Debug\SimpleVerityProject.Domain.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.csprojAssemblyReference.cache
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.csproj.CoreCompileInputs.cache
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.csproj.CopyComplete
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Services\SimpleVerityProject.Services\obj\Debug\SimpleVerityProject.Services.pdb

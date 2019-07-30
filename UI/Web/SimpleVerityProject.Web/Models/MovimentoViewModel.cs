@@ -1,5 +1,4 @@
-﻿using ProjectVerity.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace SimpleVerityProject.Web.Models
@@ -13,7 +12,6 @@ namespace SimpleVerityProject.Web.Models
         public string Descricao { get; set; }
         public DateTime DataCriacao { get; set; }
         public string Usuario { get; set; }
-        public IEnumerable<Produto> Produtos { get; set; }
-        public IEnumerable<Cosif> Cosifs { get; set; }
+        public IEnumerable<CosifViewModel> Cosifs { get; set; }
     }
 }

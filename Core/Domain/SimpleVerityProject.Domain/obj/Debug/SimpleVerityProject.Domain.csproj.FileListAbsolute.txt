@@ -4,3 +4,8 @@ C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Domain\SimpleVerityPr
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Domain\SimpleVerityProject.Domain\obj\Debug\SimpleVerityProject.Domain.csproj.CoreCompileInputs.cache
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Domain\SimpleVerityProject.Domain\obj\Debug\SimpleVerityProject.Domain.dll
 C:\GitWilliam\SimpleVerityProject\SimpleVerityProject\Core\Domain\SimpleVerityProject.Domain\obj\Debug\SimpleVerityProject.Domain.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Domain\SimpleVerityProject.Domain\bin\Debug\SimpleVerityProject.Domain.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Domain\SimpleVerityProject.Domain\bin\Debug\SimpleVerityProject.Domain.pdb
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Domain\SimpleVerityProject.Domain\obj\Debug\SimpleVerityProject.Domain.csproj.CoreCompileInputs.cache
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Domain\SimpleVerityProject.Domain\obj\Debug\SimpleVerityProject.Domain.dll
+C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Domain\SimpleVerityProject.Domain\obj\Debug\SimpleVerityProject.Domain.pdb

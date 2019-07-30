@@ -10,7 +10,7 @@ namespace SimpleVerityProject.Web.Mappers
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Movimento, MovimentoViewModel>();
+                cfg.CreateMap<Produto, ProdutoViewModel>();
                 cfg.AddProfile<AuthorMappingProfile>();
             });
 

@@ -49,6 +49,9 @@
       <HintPath>..\..\..\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SimpleInjector, Version=4.6.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SimpleInjector.4.6.2\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -166,6 +169,7 @@
     </Compile>
     <Compile Include="Mappers\AuthorMappingProfile.cs" />
     <Compile Include="Mappers\AutoMapperConfig.cs" />
+    <Compile Include="Models\CosifViewModel.cs" />
     <Compile Include="Models\MovimentoViewModel.cs" />
     <Compile Include="Models\ProdutoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -267,6 +271,10 @@
     <ProjectReference Include="..\..\..\Core\Services\SimpleVerityProject.Services\SimpleVerityProject.Services.csproj">
       <Project>{221f3a42-6099-48cb-afe6-753ece35bef6}</Project>
       <Name>SimpleVerityProject.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Shared\SimpleVerityProject.IoC\SimpleVerityProject.IoC.csproj">
+      <Project>{35B62A9C-9FAD-4DD6-AB30-B5A60B004E14}</Project>
+      <Name>SimpleVerityProject.IoC</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
