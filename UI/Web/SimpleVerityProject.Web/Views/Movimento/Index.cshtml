@@ -1,0 +1,153 @@
+﻿@model IEnumerable<SimpleVerityProject.Web.Models.ProdutoViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>
+        @{ ViewBag.Title = "Index"; }
+    </title>
+
+    @Styles.Render("~/Content/css")
+    <script src="~ / Scripts / jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd; align-content:center">
+        @Html.ActionLink("MOVIMENTO MANUAL", "Index", "Movimento", new { area = "" }, new { @class = "navbar-brand" })
+    </nav>
+
+    <div class="container body-content">
+
+        <form>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">MÊS</span>
+                </div>
+                <input type="text" class="form-control">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">ANO</span>
+                </div>
+                <input type="text" class="form-control">
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4 form-vertical">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4 form-vertical">
+                        <div class="form-group">
+                            <label class="col-md-6">PRODUTO</label>
+                            <div class="col-md-6">
+                                <select id="produtoDropDown" class="form-control">
+                                    <option value="Selecione">Selecione</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-6">COSIF</label>
+                            <div class="col-md-6">
+                                <select id="cosifDropDown" class="form-control">
+                                    <option value="Selecione">Selecione</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">VALOR</span>
+                    <span class="input-group-text">0.00</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Valor em reais.">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextDescricao">Descrição</label>
+                <textarea class="form-control text-lowercase" id="exampleFormControlTextDescricao" rows="5"></textarea>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">LIMPAR</button>
+                <button type="button" class="btn btn-secondary">NOVO</button>
+                <button type="submit" class="btn btn-secondary">SALVAR</button>
+            </div>
+        </form>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Simple Verity Project</p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+    function AjaxCall(url, data, type) {
+        return $.ajax({
+            url: url,
+            type: type ? type : 'GET',
+            data: data,
+            contentType: 'application/json'
+        });
+    }
+
+    $(function () {
+
+        AjaxCall('/Movimento/BuscarProdutos', null).done(function (response) {
+            if (response.length > 0) {
+                $('#produtoDropDown').html('');
+                var options = '';
+                options += '<option value="Select">Select</option>';
+                for (var i = 0; i < response.length; i++) {
+                    options += '<option value="' + response[i]['Text'] + '">' + response[i]['Text'] + '</option>';
+                }
+                $('#produtoDropDown').append(options);
+
+            }
+        }).fail(function (error) {
+            alert(error.StatusText);
+        });
+
+        $('#produtoDropDown').on("change", function () {
+            var produto = $('#produtoDropDown').val();
+            var obj = { country: produto };
+            AjaxCall('/Movimento/BuscarCosif', JSON.stringify(obj), 'POST').done(function (response) {
+                if (response.length > 0) {
+                    $('#cosifDropDown').html('');
+                    var options = '';
+                    options += '<option value="Select">Select</option>';
+                    for (var i = 0; i < response.length; i++) {
+                        options += '<option value="' + response[i] + '">' + response[i] + '</option>';
+                    }
+                    $('#cosifDropDown').append(options);
+                    $('#cosifDropDown').prop('disabled', false).html(options);
+
+                }
+            }).fail(function (error) {
+                alert(error.StatusText);
+            });
+        });
+
+    });
+</script>

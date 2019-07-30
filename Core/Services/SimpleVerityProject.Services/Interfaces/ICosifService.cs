@@ -9,5 +9,6 @@ namespace SimpleVerityProject.Services.Interfaces
         bool Excluir(int idEntidade);
         Cosif BuscarPorId(int id);
         List<Cosif> ListarTodos();
+        List<Cosif> BuscarPorProdutoId(int codProduto);
     }
 }

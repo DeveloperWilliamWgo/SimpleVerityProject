@@ -50,6 +50,42 @@ namespace SimpleVerityProject.Domain
             return result;
         }
 
+        public List<Cosif> BuscarPorProdutoId(int codProduto)
+        {
+            var cosif = new List<Cosif>();
+            List<Produto> produtos = new List<Produto>();
+            try
+            {
+                CriarComando("SELECT * FROM COSIF CO INNER JOIN PRODUTO PRO ON PRO.COD_PRODUTO = CO.COD_PRODUTO WHERE COD_PRODUTO = @COD_PRODUTO;");
+
+                comando.Parameters.Clear();
+
+                CriarParametro(comando, "@COD_PRODUTO", codProduto);
+
+                comando.Parameters.Add(oParam);
+
+                AbrirConexaoComBancoDados();
+                CriarLeitorExecutarComando(comando);
+
+                while (oReader.Read() && oReader.HasRows)
+                {
+                    produtos.Add(new Produto((int)oReader["COD_PRODUTO"], oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"])));
+
+                    cosif.Add(new Cosif((int)oReader["COD_COSIF"], oReader["COD_CLASSIFICACAO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"]), produtos));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro - {ex.Message}", ex);
+            }
+            finally
+            {
+                DesconectarComBancoDados();
+            }
+
+            return cosif;
+        }
+
         public bool Excluir(int idEntidade)
         {
             bool result = false;
