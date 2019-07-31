@@ -5,6 +5,6 @@ namespace SimpleVerityProject.Domain
 {
     public interface ICosifRepository : IRepository<Cosif>
     {
-        List<Cosif> BuscarPorProdutoId(int codProduto);
+        List<Cosif> BuscarPorProdutoId(int produtoId);
     }
 }

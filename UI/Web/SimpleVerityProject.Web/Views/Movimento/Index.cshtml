@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SimpleVerityProject.Web.Models.ProdutoViewModel>
+﻿@model SimpleVerityProject.Web.Models.ModelsHelper.DropListMovimentoViewModel
 
 <!DOCTYPE html>
 <html>
@@ -10,28 +10,48 @@
     </title>
 
     @Styles.Render("~/Content/css")
-    <script src="~ / Scripts / jquery-1.10.2.js"></script>
+    <script src=”https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js”></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd; align-content:center">
-        @Html.ActionLink("MOVIMENTO MANUAL", "Index", "Movimento", new { area = "" }, new { @class = "navbar-brand" })
-    </nav>
 
     <div class="container body-content">
 
+        <div class="row mx-md-n5">
+            <div class="col px-md-5">
+                <div class="p-3 border bg-light">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd; align-content:center">
+                        @Html.ActionLink("MOVIMENTO MANUAL", "Index", "Movimento", new { area = "" }, new { @class = "navbar-brand" })
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <br />
+
         <form>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="">MÊS</span>
+            <div class="row mx-md-n5">
+                <div class="col px-md-5">
+                    <div class="p-3 border bg-light">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">MÊS</span>
+                            </div>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
                 </div>
-                <input type="text" class="form-control">
 
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="">ANO</span>
+                <div class="col px-md-5">
+                    <div class="p-3 border bg-light">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">ANO</span>
+                            </div>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
                 </div>
-                <input type="text" class="form-control">
             </div>
 
             <br />
@@ -44,43 +64,52 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-4 form-vertical">
-                        <div class="form-group">
-                            <label class="col-md-6">PRODUTO</label>
-                            <div class="col-md-6">
-                                <select id="produtoDropDown" class="form-control">
-                                    <option value="Selecione">Selecione</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-6">COSIF</label>
-                            <div class="col-md-6">
-                                <select id="cosifDropDown" class="form-control">
-                                    <option value="Selecione">Selecione</option>
-                                </select>
-                            </div>
-                        </div>
+            <div class="row mx-md-n5">
+                <div class="col px-md-5">
+                    <div class="p-3 border bg-light">
+                        <label class="col-md-2">
+                            @Html.LabelFor(model => model.ProdutoId)
+                        </label>
+                        @Html.DropDownListFor(model => model.ProdutoId, Model.ProdutosDisponiveis, new { @style = "width:250px;" })
+                    </div>
+                </div>
+                <div class="col px-md-5">
+                    <div class="p-3 border bg-light">
+                        <label class="col-md-2">
+                            @Html.LabelFor(model => model.CosifId)
+                        </label>
+                        @Html.DropDownListFor(model => model.CosifId, Model.CosifsDisponiveis, new { @style = "width:250px;" })
                     </div>
                 </div>
             </div>
 
+            @*<div class="dropdown">
+                    @Html.LabelFor(model => model.ProdutoId)
+                    @Html.DropDownListFor(model => model.ProdutoId, Model.ProdutosDisponiveis, new { @style = "width:250px;" })
+
+                    @Html.LabelFor(model => model.CosifId)
+                    @Html.DropDownListFor(model => model.CosifId, Model.CosifsDisponiveis, new { @style = "width:250px;" })
+                </div>*@
+
             <br />
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">VALOR</span>
-                    <span class="input-group-text">0.00</span>
+            <div class="p-3 border bg-light">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">VALOR</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Valor em reais." aria-describedby="basic-addon1">
                 </div>
-                <input type="text" class="form-control" aria-label="Valor em reais.">
+
+                <hr />
+
+                <div class="form-group shadow-textarea">
+                    <label for="exampleFormControlTextarea6">Descrição</label>
+                    <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Descreva alguma coisa aqui..."></textarea>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="exampleFormControlTextDescricao">Descrição</label>
-                <textarea class="form-control text-lowercase" id="exampleFormControlTextDescricao" rows="5"></textarea>
-            </div>
+            <hr />
 
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-secondary">LIMPAR</button>
@@ -88,7 +117,36 @@
                 <button type="submit" class="btn btn-secondary">SALVAR</button>
             </div>
         </form>
+
         <hr />
+
+        <div class="container px-lg-5">
+            <div class="row mx-lg-n5">
+                <div class="col-1 col-md-1 border bg-info"> Mês</div>
+                <div class="col-1 col-md-1 border bg-info">Ano</div>
+                <div class="col-2 col-md-2 border bg-info">Cod. Produto</div>
+                <div class="col-2 col-md-2 border bg-info">Descricao</div>
+                <div class="col-2 col-md-2 border bg-info">Lancamento</div>
+                <div class="col-2 col-md-2 border bg-info">Movimentação</div>
+                <div class="col-2 col-md-2 border bg-info">Valor</div>
+
+                <!-- Force next columns to break to new line at md breakpoint and up -->
+                <div class="w-100 d-none d-md-block"></div>
+
+                <div class="col-1 col-md-1 border bg-light"> 31</div>
+                <div class="col-1 col-md-1 border bg-light">2019</div>
+                <div class="col-2 col-md-2 border bg-light">1</div>
+                <div class="col-2 col-md-2 border bg-light">PRODUTO TESTE</div>
+                <div class="col-2 col-md-2 border bg-light">1</div>
+                <div class="col-2 col-md-2 border bg-light">MOVIMENTO</div>
+                <div class="col-2 col-md-2 border bg-light">500,00</div>
+            </div>
+        </div>
+
+
+
+        <hr />
+
         <footer>
             <p>&copy; @DateTime.Now.Year - Simple Verity Project</p>
         </footer>
@@ -102,52 +160,45 @@
 
 <script type="text/javascript">
 
-
-    function AjaxCall(url, data, type) {
-        return $.ajax({
-            url: url,
-            type: type ? type : 'GET',
-            data: data,
-            contentType: 'application/json'
-        });
-    }
-
     $(function () {
+        $("#ProdutoId").change(function () {
+                 var selectedItem = $(this).val();
+                 var cosif = $("#CosifId");
+              var cosifProgress = $("#carregando");
+             cosifProgress.show();
+             $.ajax({
+                 cache: false,
+                 type: "GET",
+                 url: "@(Url.RouteUrl("BuscarCosif"))",
+                    data: { "produtoId": selectedItem },
+                    success: function (listItems) {
 
-        AjaxCall('/Movimento/BuscarProdutos', null).done(function (response) {
-            if (response.length > 0) {
-                $('#produtoDropDown').html('');
-                var options = '';
-                options += '<option value="Select">Select</option>';
-                for (var i = 0; i < response.length; i++) {
-                    options += '<option value="' + response[i]['Text'] + '">' + response[i]['Text'] + '</option>';
-                }
-                $('#produtoDropDown').append(options);
+                        var STSelectBox = jQuery('#CosifId');
 
-            }
-        }).fail(function (error) {
-            alert(error.StatusText);
-        });
+                        STSelectBox.empty();
+                        if (listItems.length > 0) {
 
-        $('#produtoDropDown').on("change", function () {
-            var produto = $('#produtoDropDown').val();
-            var obj = { country: produto };
-            AjaxCall('/Movimento/BuscarCosif', JSON.stringify(obj), 'POST').done(function (response) {
-                if (response.length > 0) {
-                    $('#cosifDropDown').html('');
-                    var options = '';
-                    options += '<option value="Select">Select</option>';
-                    for (var i = 0; i < response.length; i++) {
-                        options += '<option value="' + response[i] + '">' + response[i] + '</option>';
+                            for (var i = 0; i < listItems.length; i++) {
+                                if (i == 0) {
+                                    STSelectBox.append('<option value="' + i + '">--Select--</option>');
+                                }
+                                STSelectBox.append('<option value="' + listItems[i].Id + '">' + listItems[i].Id + ' - ' + listItems[i].Classificacao + '</option>');
+                            }
+                            carregando.hide()
+                        }
+                        else {
+                            for (var i = 0; i < listItems.length; i++) {
+                                STSelectBox.append('<option value="' + listItems[i].Value + '">' + listItems[i].Text + '</option>');
+
+                            }
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Falha ao buscar Cosifs.');
+                        carregando.hide();
                     }
-                    $('#cosifDropDown').append(options);
-                    $('#cosifDropDown').prop('disabled', false).html(options);
-
-                }
-            }).fail(function (error) {
-                alert(error.StatusText);
+                });
             });
         });
 
-    });
 </script>

@@ -50,17 +50,17 @@ namespace SimpleVerityProject.Domain
             return result;
         }
 
-        public List<Cosif> BuscarPorProdutoId(int codProduto)
+        public List<Cosif> BuscarPorProdutoId(int produtoId)
         {
             var cosif = new List<Cosif>();
             List<Produto> produtos = new List<Produto>();
             try
             {
-                CriarComando("SELECT * FROM COSIF CO INNER JOIN PRODUTO PRO ON PRO.COD_PRODUTO = CO.COD_PRODUTO WHERE COD_PRODUTO = @COD_PRODUTO;");
+                CriarComando("SELECT * FROM COSIF CO INNER JOIN PRODUTO PRO ON PRO.COD_PRODUTO = CO.COD_PRODUTO WHERE CO.COD_PRODUTO = @COD_PRODUTO;");
 
                 comando.Parameters.Clear();
 
-                CriarParametro(comando, "@COD_PRODUTO", codProduto);
+                CriarParametro(comando, "@COD_PRODUTO", produtoId);
 
                 comando.Parameters.Add(oParam);
 

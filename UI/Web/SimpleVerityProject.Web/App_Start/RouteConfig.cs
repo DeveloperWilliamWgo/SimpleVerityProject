@@ -14,6 +14,11 @@ namespace SimpleVerityProject.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Movimento", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute("BuscarCosif",
+                            "Movimento/BuscarCosif/",
+                            new { controller = "Movimento", action = "BuscarCosif" },
+                            new[] { "SimpleVerityProject.Web.Controllers" });
         }
     }
 }

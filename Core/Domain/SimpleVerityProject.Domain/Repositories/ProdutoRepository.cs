@@ -130,7 +130,7 @@ namespace SimpleVerityProject.Domain
 
             try
             {
-                CriarComando("SELECT * FROM PRODUTO ORDER BY 1 DESC;");
+                CriarComando("SELECT * FROM PRODUTO ORDER BY 1 ASC;");
 
                 comando.Parameters.Clear();
                 

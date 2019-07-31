@@ -3,6 +3,7 @@ using SimpleVerityProject.IoC;
 using SimpleVerityProject.Services.Interfaces;
 using SimpleVerityProject.Web.Mappers;
 using SimpleVerityProject.Web.Models;
+using SimpleVerityProject.Web.Models.ModelsHelper;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -22,48 +23,37 @@ namespace SimpleVerityProject.Web.Controllers
             _produtoService = container.GetInstance<IProdutoService>();
             _cosifService = container.GetInstance<ICosifService>();
         }
-
+               
         public ActionResult Index()
         {
-            return View();
-        }
-        
-        // GET: Movimento
-        public ActionResult BuscarProdutos()
-        {            
             AutoMapperConfig autoMapperConfig = new AutoMapperConfig();
             var mapper = autoMapperConfig.Configure().CreateMapper();
 
             var produtos = _produtoService.ListarTodos();
-                    
-            var viewModels = mapper.Map<List<ProdutoViewModel>>(produtos);
 
-            var selectListItem = new List<SelectListItem>();
+            DropListMovimentoViewModel model = new DropListMovimentoViewModel();
 
-            foreach (var item in viewModels)
+            var produtosViewModels = mapper.Map<List<ProdutoViewModel>>(produtos);
+
+            foreach (var item in produtosViewModels)
             {
-                selectListItem.Add(new SelectListItem() { Text = item.Descricao, Value = item.ProdutoId.ToString() });
+                model.ProdutosDisponiveis.Add(new SelectListItem
+                {
+                    Text = item.Descricao,
+                    Value = item.Id.ToString()
+                });
             }
 
-            //ViewBag.Produtos = selectListItem;
-
-            return Json(selectListItem, JsonRequestBehavior.AllowGet);
+            return View(model);
         }
 
-        [HttpPost]
-        public ActionResult BuscarCosif(int codProduto)
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult BuscarCosif(int produtoId)
         {
             AutoMapperConfig autoMapperConfig = new AutoMapperConfig();
             var mapper = autoMapperConfig.Configure().CreateMapper();
 
-            var cosifs = _cosifService.BuscarPorProdutoId(codProduto);
-
-            var selectListItem = new List<SelectListItem>();
-
-            foreach (var item in cosifs)
-            {
-                selectListItem.Add(new SelectListItem() { Text = item.Classificacao, Value = item.Id.ToString() });
-            }
+            var cosifs = _cosifService.BuscarPorProdutoId(produtoId);
 
             var cosifViewModel = mapper.Map<List<CosifViewModel>>(cosifs);
 
@@ -81,7 +71,7 @@ namespace SimpleVerityProject.Web.Controllers
 
             var cosifs = _movimentoService.Salvar(movimento);
 
-            return View(Index());
+            return View();
         }
 
         public ActionResult Relatorio()
