@@ -4,8 +4,11 @@ using SimpleVerityProject.Services.Interfaces;
 using SimpleVerityProject.Web.Mappers;
 using SimpleVerityProject.Web.Models;
 using SimpleVerityProject.Web.Models.ModelsHelper;
+using System;
 using System.Collections.Generic;
+using System.Json;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace SimpleVerityProject.Web.Controllers
 {
@@ -23,7 +26,7 @@ namespace SimpleVerityProject.Web.Controllers
             _produtoService = container.GetInstance<IProdutoService>();
             _cosifService = container.GetInstance<ICosifService>();
         }
-               
+
         public ActionResult Index()
         {
             AutoMapperConfig autoMapperConfig = new AutoMapperConfig();
@@ -60,19 +63,25 @@ namespace SimpleVerityProject.Web.Controllers
             return Json(cosifViewModel, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult SalvarMovimento(MovimentoViewModel movimentoViewModel)
+        [HttpPost]
+        public ActionResult SalvarMovimento(string objeto)
         {
+            //dynamic obj = Newtonsoft.Json.JsonConvert.DeserializeObject(objeto);
+
+            string[] itemValores = objeto.Replace("'\'", "").Replace("%", "-").Split('&');
+
             AutoMapperConfig autoMapperConfig = new AutoMapperConfig();
             var mapper = autoMapperConfig.Configure().CreateMapper();
 
-            movimentoViewModel.Lancamento = _movimentoService.BuscarLancamentoPorMesAno(movimentoViewModel.MesDeReferencia, movimentoViewModel.AnoDeReferencia);
+            //movimentoViewModel.Lancamento = _movimentoService.BuscarLancamentoPorMesAno(movimentoViewModel.MesDeReferencia, movimentoViewModel.AnoDeReferencia);
 
-            var movimento = mapper.Map<Movimento>(movimentoViewModel);
+            var movimento = mapper.Map<Movimento>(objeto);
 
             var cosifs = _movimentoService.Salvar(movimento);
 
             return View();
         }
+
 
         public ActionResult Relatorio()
         {

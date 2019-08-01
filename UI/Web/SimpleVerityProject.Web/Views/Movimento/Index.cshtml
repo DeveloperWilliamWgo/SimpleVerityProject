@@ -37,7 +37,7 @@
         </div>
         <br />
 
-        <form class="myForm">
+        <form class="myForm" id="myForm" method="post">
             <div class="row mx-md-n5">
                 <div class="col px-md-5">
                     <div class="p-3 border bg-light">
@@ -45,7 +45,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-info" id="">MÊS</span>
                             </div>
-                            <input type="text" class="form-control">
+                            <input type="text" name="inputMes" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-info" id="">ANO</span>
                             </div>
-                            <input type="text" class="form-control">
+                            <input type="text" name="inputAno" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -98,14 +98,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text text-info">VALOR</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Valor em reais." aria-describedby="basic-addon1">
+                    <input type="text" name="inputValor" class="form-control" aria-label="Valor em reais." aria-describedby="basic-addon1">
                 </div>
 
                 <hr />
 
                 <div class="form-group shadow-textarea text-info">
                     <label for="exampleFormControlTextarea6 text-info">Descrição</label>
-                    <textarea class="form-control z-depth-1 text-secondary" id="exampleFormControlTextarea6" rows="3" placeholder="Descreva alguma coisa aqui..."></textarea>
+                    <textarea name="inputDesc" class="form-control z-depth-1 text-secondary" id="exampleFormControlTextarea6" rows="3" placeholder="Descreva alguma coisa aqui..."></textarea>
                 </div>
             </div>
 
@@ -116,10 +116,10 @@
                     <button type="reset" class="btn btn-lg btn-outline-primary btn-rounded waves-effect">LIMPAR</button>
                 </div>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" id="btnHabilitar" name="btnHabilitar" onclick="enableFields()" class="fa-blink btn btn-lg btn-outline-primary btn-rounded waves-effect">NOVO</button>
+                    <button type="button" id="btnEnable" name="btnEnable" onclick="enableFields()" class="fa-blink btn btn-lg btn-outline-primary btn-rounded waves-effect">NOVO</button>
                 </div>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" id="btnHabilitar" name="btnHabilitar" onclick="enableFields()" class="btn btn-lg btn-outline-primary btn-rounded waves-effect">INCLUIR</button>
+                    <button type="submit" onclick="enviaInformacoes()" class="btn btn-lg btn-outline-primary btn-rounded waves-effect">INCLUIR</button>
                 </div>
             </div>
         </form>
@@ -148,8 +148,6 @@
                 <div class="col-2 col-md-2 border bg-light">500,00</div>
             </div>
         </div>
-
-
 
         <hr />
 
@@ -205,14 +203,41 @@
                     }
                 });
             });
+    });
+
+    function enviaInformacoes() {
+        
+        var objeto = JSON.stringify($("form").serialize());
+
+        //for (var i in objeto) {
+        //    inputMes = objeto[i]["inputMes"];
+        //    inputAno = objeto[i]["inputAno"];
+        //    inputValor = objeto[i]["inputValor"];
+        //    inputDesc = objeto[i]["inputDesc"];
+        //    ProdutoId = objeto[i]["ProdutoId"];
+        //    CosifId = objeto[i]["CosifId"];
+        //}
+
+        $.ajax({
+            url: "@(Url.RouteUrl("SalvarMovimento"))",
+            type: "POST",
+            datatype: "json",
+            data: { objeto },
+            success: function (data) {
+                alert('success');
+            },
+            error: function () {
+                alert('error');
+            }
         });
+    }
 
     function disabledFields(){
         $('form *').prop('disabled', true);
     };
 
     function enableBtnNew() {
-        $("#btnHabilitar").prop('disabled', false);
+        $("#btnEnable").prop('disabled', false);
     };
 
     function enableFields(){

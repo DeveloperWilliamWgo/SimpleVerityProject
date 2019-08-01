@@ -19,6 +19,11 @@ namespace SimpleVerityProject.Web
                             "Movimento/BuscarCosif/",
                             new { controller = "Movimento", action = "BuscarCosif" },
                             new[] { "SimpleVerityProject.Web.Controllers" });
+
+            routes.MapRoute("SalvarMovimento",
+                            "Movimento/SalvarMovimento/",
+                            new { controller = "Movimento", action = "SalvarMovimento" },
+                            new[] { "SimpleVerityProject.Web.Controllers" });
         }
     }
 }
