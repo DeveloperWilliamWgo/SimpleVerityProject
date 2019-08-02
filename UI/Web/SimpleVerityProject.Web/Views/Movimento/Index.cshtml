@@ -45,7 +45,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-info" id="">MÊS</span>
                             </div>
-                            <input type="text" name="inputMes" class="form-control">
+                            <input type="text" id="inputMes" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-info" id="">ANO</span>
                             </div>
-                            <input type="text" name="inputAno" class="form-control">
+                            <input type="text" id="inputAno" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -98,14 +98,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text text-info">VALOR</span>
                     </div>
-                    <input type="text" name="inputValor" class="form-control" aria-label="Valor em reais." aria-describedby="basic-addon1">
+                    <input type="text" id="inputValor" class="form-control" aria-label="Valor em reais." aria-describedby="basic-addon1">
                 </div>
 
                 <hr />
 
                 <div class="form-group shadow-textarea text-info">
                     <label for="exampleFormControlTextarea6 text-info">Descrição</label>
-                    <textarea name="inputDesc" class="form-control z-depth-1 text-secondary" id="exampleFormControlTextarea6" rows="3" placeholder="Descreva alguma coisa aqui..."></textarea>
+                    <textarea id="inputDesc" class="form-control z-depth-1 text-secondary" id="exampleFormControlTextarea6" rows="3" placeholder="Descrição..."></textarea>
                 </div>
             </div>
 
@@ -126,7 +126,7 @@
 
         <hr />
 
-        <div class="container px-lg-5">
+        <div id="parent" class="container px-lg-5">
             <div class="row mx-lg-n5">
                 <div class="col-1 col-md-1 border bg-info"> Mês</div>
                 <div class="col-1 col-md-1 border bg-info">Ano</div>
@@ -135,17 +135,9 @@
                 <div class="col-2 col-md-2 border bg-info">Lancamento</div>
                 <div class="col-2 col-md-2 border bg-info">Movimentação</div>
                 <div class="col-2 col-md-2 border bg-info">Valor</div>
+            </div>
 
-                <!-- Force next columns to break to new line at md breakpoint and up -->
-                <div class="w-100 d-none d-md-block"></div>
-
-                <div class="col-1 col-md-1 border bg-light"> 31</div>
-                <div class="col-1 col-md-1 border bg-light">2019</div>
-                <div class="col-2 col-md-2 border bg-light">1</div>
-                <div class="col-2 col-md-2 border bg-light">PRODUTO TESTE</div>
-                <div class="col-2 col-md-2 border bg-light">1</div>
-                <div class="col-2 col-md-2 border bg-light">MOVIMENTO</div>
-                <div class="col-2 col-md-2 border bg-light">500,00</div>
+            <div id="parent" class="row mx-lg-n5">
             </div>
         </div>
 
@@ -206,28 +198,56 @@
     });
 
     function enviaInformacoes() {
-        
-        var objeto = JSON.stringify($("form").serialize());
-
-        //for (var i in objeto) {
-        //    inputMes = objeto[i]["inputMes"];
-        //    inputAno = objeto[i]["inputAno"];
-        //    inputValor = objeto[i]["inputValor"];
-        //    inputDesc = objeto[i]["inputDesc"];
-        //    ProdutoId = objeto[i]["ProdutoId"];
-        //    CosifId = objeto[i]["CosifId"];
-        //}
+        //Movimento
+        var mesDeReferencia = $("#inputMes").val();
+        var anoDeReferencia = $("#inputAno").val();
+        var valor = $("#inputValor").val();
+        var descricao = $("#inputDesc").val();
+        var cosifId = $("#CosifId").val();
+        var produtoId = $("#ProdutoId").val();
 
         $.ajax({
             url: "@(Url.RouteUrl("SalvarMovimento"))",
             type: "POST",
             datatype: "json",
-            data: { objeto },
+            data: { MesDeReferencia: mesDeReferencia, AnoDeReferencia: anoDeReferencia, Lancamento: 0, Valor: valor, Descricao: descricao, DataCriacao: 0, Usuario: 0, Cosifs: 0, CosifId: cosifId, ProdutoId: produtoId, ProdutosDisponiveis: 0, CosifsDisponiveis: 0 },
             success: function (data) {
-                alert('success');
+                if (data.Resultado === true) {
+                    ListarMovimento();
+                }
             },
             error: function () {
                 alert('error');
+            }
+        });
+    }
+
+
+    function ListarMovimento() {
+
+        $.getJSON("@(Url.RouteUrl("ListarMovimento"))", function (data) {
+            debugger;
+            console.log(data);
+            if (data.length > 0) {
+                data.forEach(function (item) {
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].MesDeReferencia + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].AnoDeReferencia + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + 'TESTE' + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Descricao + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Lancamento + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + 'MOVIMENTO' + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Valor + '</div>');
+                });
+                carregando.hide();
+            }
+            else {
+                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
+                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
+                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
+                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
+                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
+                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
+                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
             }
         });
     }
