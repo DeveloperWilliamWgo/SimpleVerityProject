@@ -14,6 +14,11 @@ namespace SimpleVerityProject.Services.Services
             return cosifRepository.BuscarPorId(id);
         }
 
+        public List<Cosif> BuscarPorProdutoId(int produtoId)
+        {
+            return cosifRepository.BuscarPorProdutoId(produtoId);
+        }
+
         public bool Excluir(int idEntidade)
         {
             return cosifRepository.Excluir(idEntidade);

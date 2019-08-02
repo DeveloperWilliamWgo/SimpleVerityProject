@@ -11,6 +11,8 @@ namespace SimpleVerityProject.Web.Mappers
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Produto, ProdutoViewModel>();
+                cfg.CreateMap<Cosif, CosifViewModel>();
+                cfg.CreateMap<Movimento, MovimentoViewModel>();
                 cfg.AddProfile<AuthorMappingProfile>();
             });
 

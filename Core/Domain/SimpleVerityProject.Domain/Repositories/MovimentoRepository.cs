@@ -196,5 +196,60 @@ namespace SimpleVerityProject.Domain
 
             return proximoLancamento;
         }
+
+        public List<Movimento> BuscarTodos()
+        {
+            var entidade = new List<Movimento>();
+
+            try
+            {
+                CriarComando(" SELECT TOP 1 * FROM  MOVIMENTO_MANUAL ORDER BY 1 DESC");
+
+                comando.Parameters.Clear();
+                
+                comando.Parameters.Add(oParam);
+
+                AbrirConexaoComBancoDados();
+                CriarLeitorExecutarComando(comando);
+
+                List<Produto> prod = new List<Produto>();
+                List<Cosif> cosifs = new List<Cosif>();
+
+
+                if (oReader.Read() && oReader.HasRows)
+                {
+                    while (oReader.Read())
+                    {
+                        prod.Add(new Produto((int)oReader["COD_PRODUTO"], oReader["DES_PRODUTO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"])));
+
+
+                        cosifs.Add(new Cosif((int)oReader["COD_COSIF"], oReader["COD_CLASSIFICACAO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"]), prod));
+
+                        entidade.Add(new Movimento
+                        {
+                            MesDeReferencia = (int)oReader["DAT_MÊS"],
+                            AnoDeReferencia = (int)oReader["DAT_ANO"],
+                            Lancamento = (int)oReader["NUM_LANCAMENTO"],
+                            Valor = Convert.ToDecimal(oReader["VAL_VALOR"]),
+                            Descricao = oReader["DES_DESCRICAO"].ToString(),
+                            DataCriacao = Convert.ToDateTime(oReader["DAT_MOVIMENTO"]),
+                            Usuario = oReader["COD_USUARIO"].ToString(),
+                            ProdutoId = prod.Select(_ => _.Id).FirstOrDefault(),
+                            CosifId = cosifs.Select(_ => _.Id).FirstOrDefault()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro - {ex.Message}", ex);
+            }
+            finally
+            {
+                DesconectarComBancoDados();
+            }
+
+            return entidade;
+        }
     }
 }

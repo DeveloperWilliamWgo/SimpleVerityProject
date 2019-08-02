@@ -1,7 +1,5 @@
 ﻿using ProjectVerity.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace SimpleVerityProject.Services.Interfaces
 {
