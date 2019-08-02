@@ -18,12 +18,12 @@ namespace SimpleVerityProject.Domain
 
                 if (entidade.Id == 0)
                 {
-                    sql = @"INSERT INTO MOVIMENTO_MANUAL(DAT_MES, DAT_ANO, NUM_LANCAMENTO, VAL_VALOR, DES_DESCRICAO, DAT_MOVIMENTO, COD_USUARIO, COD_PRODUTO, COD_COSIF)
-                                VALUES(@DAT_MES, @DAT_ANO, @NUM_LANCAMENTO, @VAL_VALOR, @DES_DESCRICAO, @DAT_MOVIMENTO, @COD_USUARIO, @COD_PRODUTO, @COD_COSIF);";
+                    sql = @"INSERT INTO MOVIMENTO_MANUAL(DAT_MÊS, DAT_ANO, NUM_LANCAMENTO, VAL_VALOR, DES_DESCRICAO, DAT_MOVIMENTO, COD_USUARIO, COD_PRODUTO, COD_COSIF)
+                                VALUES(@DAT_MÊS, @DAT_ANO, @NUM_LANCAMENTO, @VAL_VALOR, @DES_DESCRICAO, @DAT_MOVIMENTO, @COD_USUARIO, @COD_PRODUTO, @COD_COSIF);";
                     comando = CriarComando(sql);
                 }
 
-                CriarParametro(comando, "@DAT_MES", entidade.MesDeReferencia);
+                CriarParametro(comando, "@DAT_MÊS", entidade.MesDeReferencia);
                 comando.Parameters.Add(oParam);
 
                 CriarParametro(comando, "@DAT_ANO", entidade.AnoDeReferencia);
@@ -167,11 +167,11 @@ namespace SimpleVerityProject.Domain
 
             try
             {
-                CriarComando(" SELECT TOP 1 NUM_LANCAMENTO FROM  MOVIMENTO_MANUAL WHERE DAT_MES = @DAT_MES AND DAT_ANO = @DAT_ANO ORDER BY 1 DESC");
+                CriarComando(" SELECT TOP 1 NUM_LANCAMENTO FROM  MOVIMENTO_MANUAL WHERE DAT_MÊS = @DAT_MÊS AND DAT_ANO = @DAT_ANO ORDER BY 1 DESC");
 
                 comando.Parameters.Clear();
 
-                CriarParametro(comando, "@DAT_MES", mes);
+                CriarParametro(comando, "@DAT_MÊS", mes);
                 comando.Parameters.Add(oParam);
 
                 CriarParametro(comando, "@DAT_ANO", ano);
@@ -218,7 +218,7 @@ namespace SimpleVerityProject.Domain
                 {
                     entidade.Add(new Movimento
                     {
-                        MesDeReferencia = (int)oReader["DAT_MES"],
+                        MesDeReferencia = (int)oReader["DAT_MÊS"],
                         AnoDeReferencia = (int)oReader["DAT_ANO"],
                         Lancamento = (int)oReader["NUM_LANCAMENTO"],
                         Valor = Convert.ToDecimal(oReader["VAL_VALOR"]),

@@ -65,11 +65,8 @@ namespace SimpleVerityProject.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult SalvarMovimento([Bind(Include = "MesDeReferencia,AnoDeReferencia,Lancamento,Valor,Descricao,DataCriacao,Usuario,Cosifs,CosifId,ProdutoId,ProdutosDisponiveis,CosifsDisponiveis")] MovimentoViewModel movimentoView)
+        public ActionResult SalvarMovimento([Bind(Include = "MesDeReferencia,AnoDeReferencia,Lancamento,Valor,Descricao,DataCriacao,Usuario,Cosifs,CosifId,ProdutoId,ProdutosDisponiveis,CosifsDisponiveis")] MovimentoViewModel movimentoView)
         {
-            AutoMapperConfig autoMapperConfig = new AutoMapperConfig();
-            var mapper = autoMapperConfig.Configure().CreateMapper();
-
             movimentoView.Lancamento = _movimentoService.BuscarLancamentoPorMesAno(movimentoView.MesDeReferencia, movimentoView.AnoDeReferencia);
 
             var movimento = MovimentoAdapter.ViewModelToModel(movimentoView);

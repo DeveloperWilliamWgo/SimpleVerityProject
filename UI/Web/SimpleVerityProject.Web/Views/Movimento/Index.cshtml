@@ -10,16 +10,18 @@
     </title>
 
     @Styles.Render("~/Content/css")
-    <script src=”https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js”></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script type="text/javascript">
         window.onload = function () {
             disabledFields();
             enableBtnNew();
+
+            ListarMovimento();
         }
 
-/**/</script>
+    </script>
 
 </head>
 <body>
@@ -137,8 +139,15 @@
                 <div class="col-2 col-md-2 border bg-info">Valor</div>
             </div>
 
-            <div id="parent" class="row mx-lg-n5">
-            </div>
+            @*<div id="parent" class="row mx-lg-n5">
+                <div class="col-1 col-md-1 border bg-info"> Mês</div>
+                <div class="col-1 col-md-1 border bg-info">Ano</div>
+                <div class="col-2 col-md-2 border bg-info">Cod. Produto</div>
+                <div class="col-2 col-md-2 border bg-info">Descricao</div>
+                <div class="col-2 col-md-2 border bg-info">Lancamento</div>
+                <div class="col-2 col-md-2 border bg-info">Movimentação</div>
+                <div class="col-2 col-md-2 border bg-info">Valor</div>
+            </div>*@
         </div>
 
         <hr />
@@ -198,7 +207,6 @@
     });
 
     function enviaInformacoes() {
-        //Movimento
         var mesDeReferencia = $("#inputMes").val();
         var anoDeReferencia = $("#inputAno").val();
         var valor = $("#inputValor").val();
@@ -213,41 +221,46 @@
             data: { MesDeReferencia: mesDeReferencia, AnoDeReferencia: anoDeReferencia, Lancamento: 0, Valor: valor, Descricao: descricao, DataCriacao: 0, Usuario: 0, Cosifs: 0, CosifId: cosifId, ProdutoId: produtoId, ProdutosDisponiveis: 0, CosifsDisponiveis: 0 },
             success: function (data) {
                 if (data.Resultado === true) {
-                    ListarMovimento();
+                    alert('Salvo com sucesso!');
                 }
             },
             error: function () {
-                alert('error');
+                alert('Erro ao salvar!');
             }
         });
     }
 
-
     function ListarMovimento() {
 
         $.getJSON("@(Url.RouteUrl("ListarMovimento"))", function (data) {
-            debugger;
             console.log(data);
+
+            debugger;
+
             if (data.length > 0) {
                 data.forEach(function (item) {
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].MesDeReferencia + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].AnoDeReferencia + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + 'TESTE' + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Descricao + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Lancamento + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + 'MOVIMENTO' + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Valor + '</div>');
+                    $("#parent").append('<div id="newParent" class="row mx-lg-n5">');
+                    $("#newParent").append('<div class="col-1 col-md-1 border bg-light">' + item.MesDeReferencia + '</div>');
+                    $("#newParent").append('<div class="col-1 col-md-1 border bg-light">' + item.AnoDeReferencia + '</div>');
+                    $("#newParent").append('<div class="col-2 col-md-2 border bg-light">' + 'TESTE' + '</div>');
+                    $("#newParent").append('<div class="col-2 col-md-2 border bg-light">' + item.Descricao + '</div>');
+                    $("#newParent").append('<div class="col-2 col-md-2 border bg-light">' + item.Lancamento + '</div>');
+                    $("#newParent").append('<div class="col-2 col-md-2 border bg-light">' + 'MOVIMENTO' + '</div>');
+                    $("#newParent").append('<div class="col-2 col-md-2 border bg-light">' + item.Valor + '</div>');
+                    $("#parent").append('</div>');
                 });
                 carregando.hide();
             }
             else {
-                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
+                $("#parent").append('<div id="newParent" class="row mx-lg-n5">');
+                $("#newParent").append('<div class="col-1 col-md-1 border bg-light">'+ - +'</div>');
+                $("#newParent").append('<div class="col-1 col-md-1 border bg-light">'+ - +'</div>');
+                $("#newParent").append('<div class="col-2 col-md-2 border bg-light">'+ - +'</div>');
+                $("#newParent").append('<div class="col-2 col-md-2 border bg-light">'+ - +'</div>');
+                $("#newParent").append('<div class="col-2 col-md-2 border bg-light">'+ - +'</div>');
+                $("#newParent").append('<div class="col-2 col-md-2 border bg-light">'+ - +'</div>');
+                $("#newParent").append('<div class="col-2 col-md-2 border bg-light">'+ - +'</div>');
+                $("#parent").append('</div>');
             }
         });
     }
