@@ -1,6 +1,7 @@
 ﻿using ProjectVerity.Domain.Entities;
 using SimpleVerityProject.IoC;
 using SimpleVerityProject.Services.Interfaces;
+using SimpleVerityProject.Web.Adapter;
 using SimpleVerityProject.Web.Mappers;
 using SimpleVerityProject.Web.Models;
 using SimpleVerityProject.Web.Models.ModelsHelper;
@@ -64,26 +65,23 @@ namespace SimpleVerityProject.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult SalvarMovimento(string objeto)
+        public JsonResult SalvarMovimento([Bind(Include = "MesDeReferencia,AnoDeReferencia,Lancamento,Valor,Descricao,DataCriacao,Usuario,Cosifs,CosifId,ProdutoId,ProdutosDisponiveis,CosifsDisponiveis")] MovimentoViewModel movimentoView)
         {
-            //dynamic obj = Newtonsoft.Json.JsonConvert.DeserializeObject(objeto);
-
-            string[] itemValores = objeto.Replace("'\'", "").Replace("%", "-").Split('&');
-
             AutoMapperConfig autoMapperConfig = new AutoMapperConfig();
             var mapper = autoMapperConfig.Configure().CreateMapper();
 
-            //movimentoViewModel.Lancamento = _movimentoService.BuscarLancamentoPorMesAno(movimentoViewModel.MesDeReferencia, movimentoViewModel.AnoDeReferencia);
+            movimentoView.Lancamento = _movimentoService.BuscarLancamentoPorMesAno(movimentoView.MesDeReferencia, movimentoView.AnoDeReferencia);
 
-            var movimento = mapper.Map<Movimento>(objeto);
+            var movimento = MovimentoAdapter.ViewModelToModel(movimentoView);
 
-            var cosifs = _movimentoService.Salvar(movimento);
+            var salvo = _movimentoService.Salvar(movimento);
 
-            return View();
+            return Json( new { Resultado = salvo }, JsonRequestBehavior.AllowGet);
         }
 
 
-        public ActionResult Relatorio()
+        [HttpGet]
+        public JsonResult ListarMovimento()
         {
             AutoMapperConfig autoMapperConfig = new AutoMapperConfig();
             var mapper = autoMapperConfig.Configure().CreateMapper();
@@ -92,7 +90,7 @@ namespace SimpleVerityProject.Web.Controllers
 
             var movimentosViewModel = mapper.Map<List<MovimentoViewModel>>(movimentos);
 
-            return View(movimentosViewModel);
+            return Json(movimentosViewModel, JsonRequestBehavior.AllowGet);
         }
     }
 }

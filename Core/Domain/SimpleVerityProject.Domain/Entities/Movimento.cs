@@ -12,7 +12,7 @@ namespace ProjectVerity.Domain.Entities
         public decimal Valor { get; set; }
         public string Descricao { get; set; }
         public DateTime DataCriacao { get; set; }
-        public string Usuario { get; set; }
+        public string Usuario { get; set; } = "TESTE";
         public int ProdutoId { get; set; }
         public Produto Produtos { get; set; }
         public int CosifId { get; set; }
