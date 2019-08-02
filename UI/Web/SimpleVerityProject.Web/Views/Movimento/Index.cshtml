@@ -213,7 +213,7 @@
             data: { MesDeReferencia: mesDeReferencia, AnoDeReferencia: anoDeReferencia, Lancamento: 0, Valor: valor, Descricao: descricao, DataCriacao: 0, Usuario: 0, Cosifs: 0, CosifId: cosifId, ProdutoId: produtoId, ProdutosDisponiveis: 0, CosifsDisponiveis: 0 },
             success: function (data) {
                 if (data.Resultado === true) {
-                    ListarMovimento(data.Resultado);
+                    ListarMovimento();
                 }
             },
             error: function () {
@@ -225,16 +225,18 @@
 
     function ListarMovimento() {
 
-        $.getJSON("@(Url.RouteUrl("ListarMovimento"))", function (dados) {
-            if (dados.length > 0) {
-                dados.forEach(function (item) {
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + item[i].MesDeReferencia + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + item[i].AnoDeReferencia + '</div>');
+        $.getJSON("@(Url.RouteUrl("ListarMovimento"))", function (data) {
+            debugger;
+            console.log(data);
+            if (data.length > 0) {
+                data.forEach(function (item) {
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].MesDeReferencia + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].AnoDeReferencia + '</div>');
                     $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + 'TESTE' + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + item[i].Descricao + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + item[i].Lancamento + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Descricao + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Lancamento + '</div>');
                     $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + 'MOVIMENTO' + '</div>');
-                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + item[i].Valor + '</div>');
+                    $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Valor + '</div>');
                 });
                 carregando.hide();
             }
@@ -248,45 +250,6 @@
                 $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
             }
         });
-
-        @*$.ajax({
-            cache: true,
-            url: "@(Url.RouteUrl("ListarMovimento"))",
-            type: "GET",
-            datatype: "json",
-            success: function (data) {
-                var STSelectBox = jQuery('#CosifId');
-
-                STSelectBox.empty();
-                if (data.length > 0) {
-
-                    for (var i = 0; i < data.length; i++) {
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].MesDeReferencia + '</div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].AnoDeReferencia + '</div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + 'TESTE' + '</div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Descricao + '</div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Lancamento + '</div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + 'MOVIMENTO' + '</div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light">' + data[i].Valor + '</div>');
-                    }
-                    carregando.hide()
-                }
-                else {
-                    for (var i = 0; i < listItems.length; i++) {
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                        $("#parent").append('<div class="col-1 col-md-1 border bg-light"></div>');
-                    }
-                }
-            },
-            error: function () {
-                alert('error');
-            }
-        });*@
     }
 
     function disabledFields(){

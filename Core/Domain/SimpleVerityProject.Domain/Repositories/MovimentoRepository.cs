@@ -203,7 +203,7 @@ namespace SimpleVerityProject.Domain
 
             try
             {
-                CriarComando(" SELECT TOP 1 * FROM  MOVIMENTO_MANUAL ORDER BY 1 ASC");
+                CriarComando(" SELECT * FROM  MOVIMENTO_MANUAL ORDER BY 1 ASC");
 
                 comando.Parameters.Clear();
 
