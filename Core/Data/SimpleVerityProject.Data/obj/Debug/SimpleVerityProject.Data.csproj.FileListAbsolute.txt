@@ -14,7 +14,6 @@ C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Data\SimpleVerityProject.Da
 C:\Users\willi\Source\Repos\SimpleVerityProject\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.pdb
 C:\GitWill\Core\Data\SimpleVerityProject.Data\bin\Debug\SimpleVerityProject.Data.dll
 C:\GitWill\Core\Data\SimpleVerityProject.Data\bin\Debug\SimpleVerityProject.Data.pdb
-C:\GitWill\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.csprojAssemblyReference.cache
 C:\GitWill\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.csproj.CoreCompileInputs.cache
 C:\GitWill\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.dll
 C:\GitWill\Core\Data\SimpleVerityProject.Data\obj\Debug\SimpleVerityProject.Data.pdb

@@ -19,9 +19,11 @@ namespace SimpleVerityProject.Web.Models
 
         public int Lancamento { get; set; }
 
-        public decimal Valor { get; set; }
+        public string Valor { get; set; }
 
         public string Descricao { get; set; }
+
+        public string Usuario { get; set; } = "TESTE";
 
         public DateTime DataCriacao { get; set; }
 

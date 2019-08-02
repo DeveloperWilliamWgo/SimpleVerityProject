@@ -1,6 +1,5 @@
 ﻿using ProjectVerity.Domain.Entities;
 using SimpleVerityProject.Web.Models;
-using System;
 
 namespace SimpleVerityProject.Web.Adapter
 {
@@ -8,16 +7,15 @@ namespace SimpleVerityProject.Web.Adapter
     {
         public static Movimento ViewModelToModel(MovimentoViewModel movimentoView)
         {
-            return new Movimento {
-                MesDeReferencia = movimentoView.MesDeReferencia,
-                AnoDeReferencia = movimentoView.AnoDeReferencia,
-                CosifId = movimentoView.CosifId,
-                ProdutoId = movimentoView.ProdutoId,
-                DataCriacao = DateTime.Now,
-                Descricao = movimentoView.Descricao,
-                Lancamento = movimentoView.Lancamento,
-                Valor = movimentoView.Valor
-            };
+            return new Movimento(
+                movimentoView.MesDeReferencia, 
+                movimentoView.AnoDeReferencia,
+                movimentoView.Lancamento,
+                decimal.Parse(movimentoView.Valor.Replace(".", ",")),
+                movimentoView.Descricao,
+                movimentoView.Usuario,
+                movimentoView.ProdutoId,
+                movimentoView.CosifId);
         }
     }
 }

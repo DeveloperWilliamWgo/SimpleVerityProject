@@ -18,12 +18,12 @@ namespace SimpleVerityProject.Domain
 
                 if (entidade.Id == 0)
                 {
-                    sql = @"INSERT INTO MOVIMENTO_MANUAL(DAT_MÊS, DAT_ANO, NUM_LANCAMENTO, VAL_VALOR, DES_DESCRICAO, DAT_MOVIMENTO, COD_USUARIO, COD_PRODUTO, COD_COSIF)
-                                VALUES(@DAT_MÊS, @DAT_ANO, @NUM_LANCAMENTO, @VAL_VALOR, @DES_DESCRICAO, @DAT_MOVIMENTO, @COD_USUARIO, @COD_PRODUTO, @COD_COSIF);";
+                    sql = @"INSERT INTO MOVIMENTO_MANUAL(DAT_MES, DAT_ANO, NUM_LANCAMENTO, VAL_VALOR, DES_DESCRICAO, DAT_MOVIMENTO, COD_USUARIO, COD_PRODUTO, COD_COSIF)
+                                VALUES(@DAT_MES, @DAT_ANO, @NUM_LANCAMENTO, @VAL_VALOR, @DES_DESCRICAO, @DAT_MOVIMENTO, @COD_USUARIO, @COD_PRODUTO, @COD_COSIF);";
                     comando = CriarComando(sql);
                 }
 
-                CriarParametro(comando, "@DAT_MÊS", entidade.MesDeReferencia);
+                CriarParametro(comando, "@DAT_MES", entidade.MesDeReferencia);
                 comando.Parameters.Add(oParam);
 
                 CriarParametro(comando, "@DAT_ANO", entidade.AnoDeReferencia);
@@ -134,18 +134,17 @@ namespace SimpleVerityProject.Domain
 
                         cosifs.Add(new Cosif((int)oReader["COD_COSIF"], oReader["COD_CLASSIFICACAO"].ToString(), Convert.ToBoolean(oReader["STA_STATUS"]), prod));
 
-                        entidade = new Movimento
-                        {
-                            MesDeReferencia = (int)oReader["DAT_MÊS"],
-                            AnoDeReferencia = (int)oReader["DAT_ANO"],
-                            Lancamento = (int)oReader["NUM_LANCAMENTO"],
-                            Valor = Convert.ToDecimal(oReader["VAL_VALOR"]),
-                            Descricao = oReader["DES_DESCRICAO"].ToString(),
-                            DataCriacao = Convert.ToDateTime(oReader["DAT_MOVIMENTO"]),
-                            Usuario = oReader["COD_USUARIO"].ToString(),
-                            ProdutoId = prod.Select(_ => _.Id).FirstOrDefault(),
-                            CosifId = cosifs.Select(_ => _.Id).FirstOrDefault()
-                        };
+                        entidade = new Movimento(
+                            (int)oReader["DAT_MES"],
+                            (int)oReader["DAT_ANO"],
+                            (int)oReader["NUM_LANCAMENTO"],
+                            Convert.ToDecimal(oReader["VAL_VALOR"]),
+                            oReader["DES_DESCRICAO"].ToString(),
+                            oReader["COD_USUARIO"].ToString(),
+                            cosifs.Select(_ => _.Id).FirstOrDefault(),
+                            prod.Select(_ => _.Id).FirstOrDefault(),
+                            Convert.ToDateTime(oReader["DAT_MOVIMENTO"])
+                        );
                     }
                 }
             }
@@ -167,11 +166,11 @@ namespace SimpleVerityProject.Domain
 
             try
             {
-                CriarComando(" SELECT TOP 1 NUM_LANCAMENTO FROM  MOVIMENTO_MANUAL WHERE DAT_MÊS = @DAT_MÊS AND DAT_ANO = @DAT_ANO ORDER BY 1 DESC");
+                CriarComando(" SELECT TOP 1 NUM_LANCAMENTO FROM  MOVIMENTO_MANUAL WHERE DAT_MES = @DAT_MES AND DAT_ANO = @DAT_ANO ORDER BY 1 DESC");
 
                 comando.Parameters.Clear();
 
-                CriarParametro(comando, "@DAT_MÊS", mes);
+                CriarParametro(comando, "@DAT_MES", mes);
                 comando.Parameters.Add(oParam);
 
                 CriarParametro(comando, "@DAT_ANO", ano);
@@ -216,18 +215,17 @@ namespace SimpleVerityProject.Domain
 
                 while (oReader.Read())
                 {
-                    entidade.Add(new Movimento
-                    {
-                        MesDeReferencia = (int)oReader["DAT_MÊS"],
-                        AnoDeReferencia = (int)oReader["DAT_ANO"],
-                        Lancamento = (int)oReader["NUM_LANCAMENTO"],
-                        Valor = Convert.ToDecimal(oReader["VAL_VALOR"]),
-                        Descricao = oReader["DES_DESCRICAO"].ToString(),
-                        DataCriacao = Convert.ToDateTime(oReader["DAT_MOVIMENTO"]),
-                        Usuario = oReader["COD_USUARIO"].ToString(),
-                        ProdutoId = (int)oReader["COD_PRODUTO"],
-                        CosifId = (int)oReader["COD_COSIF"]
-                    });
+                    entidade.Add(new Movimento(
+                        (int)oReader["DAT_MES"],
+                        (int)oReader["DAT_ANO"],
+                        (int)oReader["NUM_LANCAMENTO"],
+                        Convert.ToDecimal(oReader["VAL_VALOR"]),
+                        oReader["DES_DESCRICAO"].ToString(),
+                        oReader["COD_USUARIO"].ToString(),
+                        cosifs.Select(_ => _.Id).FirstOrDefault(),
+                        prod.Select(_ => _.Id).FirstOrDefault(),
+                        Convert.ToDateTime(oReader["DAT_MOVIMENTO"])
+                    ));
                 }
             }
             catch (Exception ex)
