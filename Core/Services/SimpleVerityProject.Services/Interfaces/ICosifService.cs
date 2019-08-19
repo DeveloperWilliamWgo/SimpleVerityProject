@@ -1,14 +1,11 @@
-﻿using ProjectVerity.Domain.Entities;
+﻿using SimpleVerityProject.Domain.Entities;
 using System.Collections.Generic;
 
 namespace SimpleVerityProject.Services.Interfaces
 {
     public interface ICosifService
     {
-        bool Salvar(Cosif entidade);
-        bool Excluir(int idEntidade);
-        Cosif BuscarPorId(int id);
-        List<Cosif> ListarTodos();
-        List<Cosif> BuscarPorProdutoId(int codProduto);
+        bool Salvar(Cosif entidade);       
+        IEnumerable<Cosif> BuscarPorProdutoId(int codProduto);
     }
 }

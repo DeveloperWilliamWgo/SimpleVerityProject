@@ -1,0 +1,16 @@
+﻿<div id="app">
+    <input type="text" v-model="produto.produtoId" />
+    <input type="text" v-model="produto.produtoDescricao" />
+    <br />
+
+    <span>Text from input tag:</span>
+    <br />
+    <p>{{ produto.produtoId }}</p>
+    <p>{{ produto.produtoDescricao }}</p>
+
+    <br />
+
+    <span>Text from component comp_1:</span>
+    <br />
+    <comp_1 v-bind:produto="produto"></comp_1>
+</div>

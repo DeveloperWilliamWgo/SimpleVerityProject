@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,23 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Entities\Cosit.cs" />
+    <Compile Include="Entities\Cosif.cs" />
     <Compile Include="Entities\Movimento.cs" />
     <Compile Include="Entities\Produto.cs" />
+    <Compile Include="Interfaces\ICosifRepository.cs" />
+    <Compile Include="Interfaces\IMovimentoRepository.cs" />
+    <Compile Include="Interfaces\IProdutoRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CosifRepository.cs" />
-    <Compile Include="Repositories\Interfaces\ICosifRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IMovimentoRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IProdutoRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IRepository.cs" />
-    <Compile Include="Repositories\MovimentoRepository.cs" />
-    <Compile Include="Repositories\ProdutoRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Data\SimpleVerityProject.Data\SimpleVerityProject.Data.csproj">
-      <Project>{dd74a943-2d8e-4303-9a6f-63fa1de332a4}</Project>
-      <Name>SimpleVerityProject.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

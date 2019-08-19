@@ -1,4 +1,4 @@
-﻿using ProjectVerity.Domain.Entities;
+﻿using SimpleVerityProject.Domain.Entities;
 using System.Collections.Generic;
 
 namespace SimpleVerityProject.Services.Interfaces
@@ -6,9 +6,7 @@ namespace SimpleVerityProject.Services.Interfaces
     public interface IProdutoService
     {
         bool Salvar(Produto entidade);
-        bool Excluir(int idEntidade);
 
-        Produto BuscarPorId(int id);
-        List<Produto> ListarTodos();
+        IEnumerable<Produto> ListarProdutos();
     }
 }

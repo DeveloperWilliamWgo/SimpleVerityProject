@@ -1,0 +1,6 @@
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Domain\SimpleVerityProject.Domain\bin\Release\SimpleVerityProject.Domain.dll
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Domain\SimpleVerityProject.Domain\bin\Release\SimpleVerityProject.Domain.pdb
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Domain\SimpleVerityProject.Domain\obj\Release\SimpleVerityProject.Domain.csprojAssemblyReference.cache
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Domain\SimpleVerityProject.Domain\obj\Release\SimpleVerityProject.Domain.csproj.CoreCompileInputs.cache
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Domain\SimpleVerityProject.Domain\obj\Release\SimpleVerityProject.Domain.dll
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Domain\SimpleVerityProject.Domain\obj\Release\SimpleVerityProject.Domain.pdb

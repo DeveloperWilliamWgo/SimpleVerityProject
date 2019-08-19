@@ -1,0 +1,11 @@
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\bin\Release\SimpleVerityProject.Data.dll
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\bin\Release\SimpleVerityProject.Data.pdb
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\bin\Release\NLog.dll
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\bin\Release\SimpleVerityProject.Domain.dll
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\bin\Release\SimpleVerityProject.Domain.pdb
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\bin\Release\NLog.xml
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\obj\Release\SimpleVerityProject.Data.csprojAssemblyReference.cache
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\obj\Release\SimpleVerityProject.Data.csproj.CoreCompileInputs.cache
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\obj\Release\SimpleVerityProject.Data.csproj.CopyComplete
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\obj\Release\SimpleVerityProject.Data.dll
+C:\Users\william.oliveira\Desktop\SimpleVerityProject_v1\Core\Data\SimpleVerityProject.Data\obj\Release\SimpleVerityProject.Data.pdb

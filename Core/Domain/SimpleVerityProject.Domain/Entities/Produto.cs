@@ -1,6 +1,4 @@
-﻿using SimpleVerityProject.Domain.Entities;
-
-namespace ProjectVerity.Domain.Entities
+﻿namespace SimpleVerityProject.Domain.Entities
 {
     public class Produto : BaseEntity
     {

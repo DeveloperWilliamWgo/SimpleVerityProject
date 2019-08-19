@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ProjectVerity.Domain.Entities;
+using SimpleVerityProject.Domain.Entities;
 using SimpleVerityProject.Web.Models;
 
 namespace SimpleVerityProject.Web.Mappers
@@ -9,6 +9,12 @@ namespace SimpleVerityProject.Web.Mappers
         public AuthorMappingProfile()
         {
             CreateMap<Movimento, MovimentoViewModel>().ReverseMap();
+            CreateMap<Produto, ProdutoViewModel>().ReverseMap();
+            CreateMap<Cosif, CosifViewModel>().ReverseMap();
+
+            CreateMap<Movimento, MovimentoModel>().ReverseMap();
+            CreateMap<Produto, ProdutoModel>().ReverseMap();
+            CreateMap<Cosif, CosifModel>().ReverseMap();
         }
     }
 }

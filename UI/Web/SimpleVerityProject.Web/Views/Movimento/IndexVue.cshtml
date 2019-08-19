@@ -1,0 +1,7 @@
+﻿@model IEnumerable<SimpleVerityProject.Web.Models.ProdutoModel>
+
+
+@Html.Raw(File.ReadAllText(Server.MapPath("~/Vue/template/comp_1-template.html")))
+<script src="~/Vue/component/comp_1.js"></script>
+@Html.Raw(File.ReadAllText(Server.MapPath("~/Vue/template/maintemplate.html")))
+<script src="~/Vue/app/mainapp.js"></script>

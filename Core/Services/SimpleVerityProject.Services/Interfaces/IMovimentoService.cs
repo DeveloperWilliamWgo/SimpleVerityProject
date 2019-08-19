@@ -1,4 +1,4 @@
-﻿using ProjectVerity.Domain.Entities;
+﻿using SimpleVerityProject.Domain.Entities;
 using System.Collections.Generic;
 
 namespace SimpleVerityProject.Services.Interfaces
@@ -7,6 +7,6 @@ namespace SimpleVerityProject.Services.Interfaces
     {
         bool Salvar(Movimento entidade);
         int BuscarLancamentoPorMesAno(int mes, int ano);
-        List<Movimento> BuscarTodos();
+        IEnumerable<Movimento> BuscarTodos();
     }
 }

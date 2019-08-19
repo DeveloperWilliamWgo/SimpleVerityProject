@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using ProjectVerity.Domain.Entities;
-using SimpleVerityProject.Domain;
+using SimpleVerityProject.Domain.Entities;
+using SimpleVerityProject.Domain.Interfaces;
 using SimpleVerityProject.Services.Interfaces;
 
 namespace SimpleVerityProject.Services.Services
@@ -12,6 +12,11 @@ namespace SimpleVerityProject.Services.Services
         public MovimentoService(IMovimentoRepository movimentoRepository)
         {
             _movimentoRepository = movimentoRepository;
+        }      
+
+        public bool Salvar(Movimento entidade)
+        {
+            return _movimentoRepository.Salvar(entidade);
         }
 
         public int BuscarLancamentoPorMesAno(int mes, int ano)
@@ -19,14 +24,9 @@ namespace SimpleVerityProject.Services.Services
             return _movimentoRepository.BuscarLancamentoPorMesAno(mes, ano);
         }
 
-        public List<Movimento> BuscarTodos()
+        public IEnumerable<Movimento> BuscarTodos()
         {
             return _movimentoRepository.BuscarTodos();
-        }
-
-        public bool Salvar(Movimento entidade)
-        {
-            return _movimentoRepository.Salvar(entidade);
         }
     }
 }

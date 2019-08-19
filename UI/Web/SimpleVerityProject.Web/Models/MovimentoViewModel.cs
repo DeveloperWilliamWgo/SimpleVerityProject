@@ -12,7 +12,7 @@ namespace SimpleVerityProject.Web.Models
             ProdutosDisponiveis = new List<SelectListItem>();
             CosifsDisponiveis = new List<SelectListItem>();
         }
-
+                     
         public int MesDeReferencia { get; set; }
 
         public int AnoDeReferencia { get; set; }
@@ -23,18 +23,18 @@ namespace SimpleVerityProject.Web.Models
 
         public string Descricao { get; set; }
 
+        public DateTime? DataCriacao { get; set; }
+
         public string Usuario { get; set; } = "TESTE";
-
-        public DateTime DataCriacao { get; set; }
-
-        public IEnumerable<CosifViewModel> Cosifs { get; set; }
-
-        public int CosifId { get; set; }
 
         public int ProdutoId { get; set; }
 
+        public int CosifId { get; set; }
 
+        public IEnumerable<CosifViewModel> Cosifs { get; set; }
+               
 
+        
         public IList<SelectListItem> ProdutosDisponiveis { get; set; }
         public IList<SelectListItem> CosifsDisponiveis { get; set; }
 
